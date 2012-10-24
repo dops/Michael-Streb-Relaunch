@@ -1,0 +1,25 @@
+<h2>Userrollen verwalten</h2>
+
+<div>
+    {if $oAcl->isAllowed('accounting', 'userrole', 'edit')}<a href="{$WEB_ROOT}userrole/edit" title="Rolle hinzufügen"><span class="icon iconAdd"></span></a>{/if}
+    {if $oAcl->isAllowed('accounting', 'userrole', 'permissionUpdate')}<a href="{$WEB_ROOT}userrole/permissionUpdate" title="Recht neu laden"><span class="icon iconUpdate"></span></a>{/if}
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    {foreach $userroles['rows'] as $role}
+    <tr>
+        <td>{$role->getId()}</td>
+        <td>{$role->getName()}</td>
+        <td>
+            {if $oAcl->isAllowed('accounting', 'userrole', 'edit')}<a href="{$WEB_ROOT}userrole/edit/id/{$role->getId()}" title="Rolle {$role->getName()} bearbeiten"><span class="icon iconEdit"></span></a>{/if}
+            {if $oAcl->isAllowed('accounting', 'userrole', 'delete')}<a href="{$WEB_ROOT}userrole/delete/id/{$role->getId()}" title="Rolle {$role->getName()} löschen"><span class="icon iconError"></span></a>{/if}
+        </td>
+    </tr>
+    {/foreach}
+</table>

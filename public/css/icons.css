@@ -1,0 +1,37 @@
+/* @group icons */
+/* default icon settings */
+span.icon {
+    display: inline-block;
+    margin: 2px 0;
+    padding: 0;
+    min-width: 16px;
+    min-height: 16px;
+    vertical-align: bottom;
+    background: transparent url(/images/icons/sprite.png);
+}
+
+/* if the icon has text content ... */
+span.icon span {
+    padding: 0 0 0 18px;
+    min-width: 16px;
+}
+
+/* icon image positions */
+span.iconSuccess            { background-position: -421px -225px; }
+span.iconError              { background-position: -261px -224px; }
+span.iconEdit               { background-position: -229px -128px; }
+span.iconAdd                { background-position: -197px -160px; }
+span.iconUpdate             { background-position: -389px -128px; }
+span.iconView               { background-position: -101px -32px; }
+span.iconSend               { background-position: -101px 0px; }
+span.iconPdf                { background-position: -325px -416px; }
+span.iconPositive           { background-position: -421px -96px; }
+span.iconNegative           { background-position: -261px -96px; }
+span.iconClearing           { background-position: -5px -416px; }
+span.iconReporting          { background-position: -37px -416px; }
+span.iconReversal           { background-position: -133px -416px; }
+span.iconCreditNote         { background-position: -70px -416px; }
+span.iconDebitNote          { background-position: -101px -416px; }
+span.iconCreateDebitNote    { background-position: -357px -416px; }
+span.iconCreateReversal     { background-position: -390px -416px; }
+/*@end*/

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <base href="{$baseUrl}" />
+        <title>{$headTitle}</title>
+        {if isset($css)}{$css}{/if}
+        {if isset($jsHeader)}{$jsHeader}{/if}
+        <script>document.documentElement.className += ' js';</script>
+        <!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    </head>
+    <body>
+        <header>
+            <h1><a href="{$WEB_ROOT}">{$headTitle}</a></h1>
+            <nav>
+                <ul>
+                    {if $oAcl->isAllowed('Backend', 'index', 'index')}<li><a href="{$WEB_ROOT}">Startseite</a></li>{/if}
+                    {if $oAcl->isAllowed('Backend', 'reference', 'index')}<li><a href="{$WEB_ROOT}reference">Referenzen</a></li>{/if}
+                    {if $oCurrentUser != false}<li><a href="{$WEB_ROOT}user/logout">Logout</a></li>{else}<li><a href="{$WEB_ROOT}user/login">Login</a></li>{/if}
+                </ul>
+            </nav>
+            <div class="clear"></div>
+        </header>
+        {if isset($aMessages)}
+        <section id="messages">
+            {include file="messages.tpl.html"}
+        </section>
+        {/if}
+        <section id="breadcrumb">
+            {foreach $breadcrumb as $data}
+            <a href="{$data.link}" title="{$data.title}">&rArr; {$data.title}</a>
+            {/foreach}
+        </section>
+        <section id="main">
+                {$CONTENT}
+        </section>
+        {if $applicationEnv == 'development'}
+        <section id="debug">
+            <h3>Debug Output</h3>
+            {$debugContent}
+        </section>
+        {/if}
+
+        {if isset($jsFooter)}{$jsFooter}{/if}
+    </body>
+</html>

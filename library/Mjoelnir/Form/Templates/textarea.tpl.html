@@ -1,0 +1,13 @@
+{if isset($prefix)}{$prefix}{/if}
+<div id="{$wrapperId}" class="field fieldTextarea {$classes}">
+    {if isset($label)}
+    <div class="labelWrapper">
+        {if $label}<label for="{$elementId}">{$label}{if $required} *{/if}</label>{/if}
+    </div>
+    {/if}
+    <div class="elementWrapper">
+        <textarea name="{$name}" id="{$elementId}" {$options}>{$value}</textarea>
+        {if isset($description)}<p class="formElementDescription">{$description}</p>{/if}
+    </div>
+</div>
+{if isset($suffix)}{$suffix}{/if}

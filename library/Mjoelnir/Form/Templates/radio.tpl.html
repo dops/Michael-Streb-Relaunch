@@ -1,0 +1,13 @@
+{if isset($prefix)}{$prefix}{/if}
+<div id="{$wrapperId}" class="field fieldRadio {$classes}">
+    <div class="elementWrapper">
+        <input type="radio" name="{$name}" id="{$elementId}" value="{$value}" {$options} />
+        {if isset($description)}<p class="formElementDescription">{$description}</p>{/if}
+    </div>
+    {if isset($label)}
+    <div class="labelWrapper">
+        {if $label}<label for="{$elementId}">{$label}{if $required} *{/if}</label>{/if}
+    </div>
+    {/if}
+</div>
+{if isset($suffix)}{$suffix}{/if}

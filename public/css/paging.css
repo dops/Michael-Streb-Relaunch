@@ -1,0 +1,13 @@
+/* @group Paging */
+#paging {
+    padding: 10px;
+    text-align: center;
+    border-width: 2px 0 2px 0;
+    border-style: solid;
+    border-color: #000;
+}
+
+#paging span, #paging a {
+    margin: 0 3px;
+}
+/* @end */

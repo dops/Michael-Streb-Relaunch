@@ -1,0 +1,21 @@
+{if isset($aMessages.success) && count($aMessages.success) > 0}
+<div class="successMsg">
+    {foreach $aMessages.success as $message}
+    <p>{$message}</p>
+    {/foreach}
+</div>
+{/if}
+{if isset($aMessages.error) && count($aMessages.error) > 0}
+<div class="errorMsg">
+    {foreach $aMessages.error as $message}
+    <p>{$message}</p>
+    {/foreach}
+</div>
+{/if}
+{if isset($aMessages.info) && count($aMessages.info) > 0}
+<div class="infoMsg">
+    {foreach $aMessages.info as $message}
+    <p>{$message}</p>
+    {/foreach}
+</div>
+{/if}

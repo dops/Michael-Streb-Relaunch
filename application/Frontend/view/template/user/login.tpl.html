@@ -1,0 +1,13 @@
+<h2>Login</h2>
+
+<div id="login">
+    {if isset($error)}
+    <div class="errorMsg">
+        {foreach $error as $message}
+        <p>{$message}</p>
+        {/foreach}
+    </div>
+    {/if}
+    {$form}
+</div>
+<div class="clear"></div>

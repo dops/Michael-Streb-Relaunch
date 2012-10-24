@@ -1,0 +1,33 @@
+<h2>Referenzen</h2>
+
+{include file="../paging.tpl.html" pageElements=$aReferences bWithoutLinks=true}
+
+<p><a href="/reference/edit"><span class="icon iconAdd"></span></a></p>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>URL</th>
+        </tr>
+    </thead>
+    <tbody>
+        {if $aReferences['count'] > 0}
+            {foreach $aReferences['rows'] as $oReference}
+            <tr>
+                <td>{$oReference->getId()}</td>
+                <td>{$oReference->getName()}</td>
+                <td>{$oReference->getUrl()}</td>
+            </tr>
+            {/foreach}
+        {else}
+        <tr>
+            <td>
+                Es sind leider noch keine Referenzen vorhanden.
+            </td>
+        </tr>
+        {/if}
+    </tbody>
+</table>
+
+{include file="../paging.tpl.html" pageElements=$aReferences}

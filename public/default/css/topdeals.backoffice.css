@@ -1,0 +1,290 @@
+/* @group Reset */
+/*
+Copyright (c) 2010, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.com/yui/license.html
+version: 3.3.0
+build: 3167
+*/
+html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym{border:0;font-variant:normal;}sup{vertical-align:text-top;}sub{vertical-align:text-bottom;}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}input,textarea,select{*font-size:100%;}legend{color:#000;}
+/* @end */
+
+/* @group Structure */
+html {
+	color: #333;
+	background: #f5f5f5;
+}
+body {
+	font: .75em FreeSans, Arial, sans-serif;
+	width: 75%;
+	max-width: 860px;
+	margin: 10px auto;
+	padding: 20px;
+	color: #333;
+	background: #fff;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+header {
+	display: block;
+	position: relative;
+	margin: 0 -20px 2em;
+	padding: 0 20px 10px;
+	border-bottom: 2px solid #f5f5f5;
+}
+header > nav {
+	position: absolute;
+	top: 12px;
+	right: 20px;
+}
+header > nav li {
+	display: inline;
+}
+header > nav a:link ,
+header > nav a:visited ,
+header > nav a:hover ,
+header > nav a:focus ,
+header > nav a:active {
+	float: left;
+	display: inline;
+	font: bold 1em/1 'Arial Rounded MT Bold', FreeSans, Arial, sans-serif;
+	margin: 0 0 0 10px;
+	padding: 5px 10px 7px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	text-decoration: none;
+	-webkit-transition: background .2s ease;
+	-moz-transition: background .2s ease;
+	-ms-transition: background .2s ease;
+	-o-transition: background .2s ease;
+	transition: background .2s ease;
+}
+header > nav a:link ,
+header > nav a:visited {
+	color: #fff;
+	background: #09c;
+}
+header > nav a:hover ,
+header > nav a:focus ,
+header > nav a:active {
+	color: #fff;
+	background: #068;
+}
+/* @end */
+
+/* @group Headlines and Paragraphs */
+h1 {
+	position: relative;
+	font: bold 3em 'Arial Rounded MT Bold', FreeSans, Arial, sans-serif;
+	color: #09c;
+	background: transparent;
+}
+h2 {
+	font: bold 2em 'Arial Rounded MT Bold', FreeSans, Arial, sans-serif;
+	color: #333;
+	background: transparent;
+	margin: 0 0 .5em;
+}
+p {
+	margin: 0 0 1em;
+}
+/* @end */
+
+/* @group Links */
+a:link , a:visited {
+	color: #09c;
+	background: transparent;
+	text-decoration: none;
+}
+a:hover , a:focus , a:active {
+	color: #09c;
+	background: transparent;
+	text-decoration: underline;
+}
+/* @end */
+
+/* @group Forms */
+form {
+	margin: 0 0 2em;
+}
+form ol {
+	overflow: hidden;
+}
+form ol li {
+	float: left;
+	display: inline;
+	margin: 0 1em 0 0;
+}
+form label {
+	font-weight: bold;
+	cursor: pointer;
+}
+form dt {
+	margin: 0 0 .25em;
+}
+form dd {
+	margin: 0 0 1em;
+}
+form #submit-label ,
+form #id-label ,
+form #id-element {
+	display: none;
+}
+form select {
+	vertical-align: middle;
+}
+form input[type="text"] {
+	width: 33%;
+	padding: 1px 2px;
+	font-family: FreeSans, Arial, sans-serif;
+}
+form input[type='submit'] , form input[type='reset'] , form input[type='button'] ,
+button , .button ,
+.button:link  , .button:visited ,
+.button:hover , .button:focus , .button:active {
+	display: inline-block;
+	font: bold 1em/1 'Arial Rounded MT Bold', FreeSans, Arial, sans-serif;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, .25);
+	text-decoration: none;
+	text-align: center;
+	vertical-align: middle;
+	margin: 0;
+	padding: 5px 10px 7px;
+	border: 0 none;
+	cursor: pointer;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-transition: background .2s ease;
+	-moz-transition: background .2s ease;
+	-ms-transition: background .2s ease;
+	-o-transition: background .2s ease;
+	transition: background .2s ease;
+}
+form input[type='submit'] , form input[type='reset'] , form input[type='button'] ,
+button , .button ,
+.button:link , .button:visited {
+	color: #fff;
+	background: #fabb1d;
+	background: #fabb1d -webkit-gradient(linear, top left, bottom left, from(#fabb1d), to(#f59800));
+	background: #fabb1d -webkit-linear-gradient(top, #fabb1d, #f59800);
+	background: #fabb1d -moz-linear-gradient(top, #fabb1d, #f59800);
+	background: #fabb1d -ms-linear-gradient(top, #fabb1d, #f59800);
+	background: #fabb1d -o-linear-gradient(top, #fabb1d, #f59800);
+	background: #fabb1d linear-gradient(top, #fabb1d, #f59800);
+}
+form input[type='submit']:hover , form input[type='submit']:focus , form input[type='submit']:active ,
+form input[type='reset']:hover  , form input[type='reset']:focus  , form input[type='reset']:active  ,
+form input[type='button']:hover , form input[type='button']:focus , form input[type='button']:active ,
+ button:hover ,  button:focus ,  button:active ,
+.button:hover , .button:focus , .button:active {
+	color: #fff;
+	background: #f59800;
+	background: #f59800 -webkit-gradient(linear, top left, bottom left, from(#f59800), to(#e78f00));
+	background: #f59800 -webkit-linear-gradient(top, #f59800, #e78f00);
+	background: #f59800 -moz-linear-gradient(top, #f59800, #e78f00);
+	background: #f59800 -ms-linear-gradient(top, #f59800, #e78f00);
+	background: #f59800 -o-linear-gradient(top, #f59800, #e78f00);
+	background: #f59800 linear-gradient(top, #f59800, #e78f00);
+}
+form input[type="submit"].small ,
+form input[type="reset"].small ,
+form input[type="button"].small ,
+button.small , .button.small {
+	padding: 3px 7px 4px;
+}
+button::-moz-focus-inner ,
+.button::-moz-focus-inner ,
+input[type='submit']::-moz-focus-inner,
+input[type='reset']::-moz-focus-inner,
+input[type='button']::-moz-focus-inner {
+	/* this fixes weird inner offset in Gecko */
+	border: 0 none;
+	padding: 0;
+}
+.js #period-custom ,
+.js #period-custom + li {
+	display: none;
+}
+#period-custom span {
+	float: left;
+	display: inline;
+	margin: 0 1em 0 0;
+}
+#period-custom input {
+	-webkit-box-shadow: 0 0 1em #eee inset;
+	-moz-box-shadow: 0 0 1em #eee inset;
+	box-shadow: 0 0 1em #eee inset;
+	font-size: 1em;
+	padding: 2px 4px;
+}
+#period-custom + li {
+	margin: 1em 0 0;
+}
+/* @end */
+
+/* @group Tables */
+table {
+	width: 100%;
+	margin: 0 0 1em;
+}
+table th {
+	font-weight: bold;
+	padding: 10px;
+	color: #333;
+        font-size: 12px;
+	background: #ddd;
+	border-bottom: 1px solid #fff;
+	vertical-align: middle;
+}
+table td {
+	padding: 10px;
+        font-size: 12px;
+	border-bottom: 1px solid #fff;
+	vertical-align: top;
+}
+table tbody tr.clickable td {
+	cursor: pointer;
+}
+table tbody tr:nth-child(odd) td {
+	color: #333;
+	background: #f1f1f1;
+}
+table tbody tr:nth-child(even) td {
+	color: #333;
+	background: #fff;
+}
+table tbody tr:hover td {
+	color: #333;
+	background: #fea;
+}
+table tbody tr.highlight {
+	font-weight: bold;
+}
+table tfoot td {
+	font-weight: bold;
+}
+table tfoot tr:nth-child(odd) td {
+	background: #f1f1f1;
+}
+table tfoot tr:nth-child(even) td {
+	background: #fff;
+}
+/* @end */
+
+/* @group Helper Classes */
+.hidden       {
+	display: none;
+}
+.align-left   { text-align: left;   }
+.align-right  { text-align: right;  }
+.align-center { text-align: center; }
+/* @end */
+
+/* @group Div Classes */
+div.link {
+	margin: 0 0 10px 0;
+}
+/* @end */

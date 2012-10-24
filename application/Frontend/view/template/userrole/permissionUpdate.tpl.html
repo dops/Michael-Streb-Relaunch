@@ -1,0 +1,17 @@
+<h2>Rechte aktualisieren</h2>
+
+{if isset($messages.added) && count($messages.added) > 0}
+<div class="successMsg">
+    {foreach $messages.added as $message}
+    <p>{$message}</p>
+    {/foreach}
+</div>
+{/if}
+
+{if isset($messages.deleted) && count($messages.deleted) > 0}
+<div class="errorMsg">
+    {foreach $messages.deleted as $message}
+    <p>{$message}</p>
+    {/foreach}
+</div>
+{/if}

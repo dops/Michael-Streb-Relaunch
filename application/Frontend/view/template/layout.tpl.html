@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <base href="{$baseUrl}" />
+        <title>{$headTitle}</title>
+        {if isset($css)}{$css}{/if}
+        {if isset($jsHeader)}{$jsHeader}{/if}
+        <script>document.documentElement.className += ' js';</script>
+        <!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    </head>
+    <body>
+        <div id="page">
+            <header>
+                <h1><a href="{$WEB_ROOT}"><img src="/images/logo-header.png" title="Michael Streb" /></a></h1>
+                <nav>
+                    <ul>
+                        {if $oAcl->isAllowed('Frontend', 'index', 'index')}<li><a href="{$WEB_ROOT}">Home</a></li>{/if}
+                        {if $oAcl->isAllowed('Frontend', 'references', 'index')}<li><a href="{$WEB_ROOT}references">Referenzen</a></li>{/if}
+                        {if $oAcl->isAllowed('Frontend', 'contact', 'index')}<li><a href="{$WEB_ROOT}contact">Kontakt</a></li>{/if}
+                        {if $oAcl->isAllowed('Frontend', 'user', 'login')}<li><a href="{$WEB_ROOT}user/login">Login</a></li>{/if}
+                        {if $oCurrentUser != false}<li><a href="{$WEB_ROOT}user/logout">Logout</a></li>{else}<li><a href="{$WEB_ROOT}user/login">Login</a></li>{/if}
+                    </ul>
+                </nav>
+            </header>
+            <section id="main">
+                {if isset($aMessages)}
+                <div id="messages">
+                    {include file="messages.tpl.html"}
+                </div>
+                {/if}
+                <div id="breadcrumb">
+                    {foreach $breadcrumb as $data}
+                    <a href="{$data.link}" title="{$data.title}">&rArr; {$data.title}</a>
+                    {/foreach}
+                </div>
+                    {$CONTENT}
+            </section>
+        </div>
+        {if $applicationEnv == 'development'}
+        <section id="debug">
+            <h3>Debug Output</h3>
+            {$debugContent}
+        </section>
+        {/if}
+
+        {if isset($jsFooter)}{$jsFooter}{/if}
+    </body>
+</html>

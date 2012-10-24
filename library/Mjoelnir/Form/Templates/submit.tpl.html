@@ -1,0 +1,7 @@
+{if isset($prefix)}{$prefix}{/if}
+<div id="{$wrapperId}" class="field fieldSubmit {$classes}">
+    <div class="elementWrapper">
+        <input type="submit" name="{$name}" id="{$elementId}" value="{$value}" {$options} />
+    </div>
+</div>
+{if isset($suffix)}{$suffix}{/if}

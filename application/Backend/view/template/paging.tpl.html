@@ -1,0 +1,26 @@
+{if $pageElements['count'] > $iPageSize}
+{assign var=iPageMax value=ceil($pageElements['count'] / $iPageSize)}
+
+<div id="paging">
+    <div>
+        Zeige Ergebnisse {(($iPageCurrent - 1) * $iPageSize) + 1} bis {(($iPageCurrent - 1) * $iPageSize) + $iPageSize} von {$pageElements['count']} Ergebnissen.
+    </div>
+    {if !isset($bWithoutLinks) || $bWithoutLinks == false}
+    <strong>weitere Seiten: </strong>
+    {if $iPageCurrent > 1}
+    <a href="#" onclick="return setFormValue('frmList', 'p', {$iPageCurrent - 1}, true);">zurück</a> -
+    {/if}
+    {section name=paging start=0 loop=$iPageMax step=1}
+    {if $iPageCurrent == ($smarty.section.paging.index + 1)}
+    <span class="currentPage"><strong>{$smarty.section.paging.index + 1}</strong></span>
+    {else}
+    <a href="#" onclick="return setFormValue('frmList', 'p', {$smarty.section.paging.index + 1}, true);">{$smarty.section.paging.index + 1}</a>
+    {/if}
+    {/section}
+    {if $iPageCurrent < $iPageMax}
+     - <a href="#" onclick="return setFormValue('frmList', 'p', {$iPageCurrent + 1}, true);">weiter</a>
+    {/if}
+    {/if}
+</div>
+
+{/if}

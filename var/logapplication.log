@@ -1,0 +1,22 @@
+[2012-01-13 15:24:10] topdealsImport: Start import process.
+[2012-01-13 15:24:10] topdealsImport: Last insert id for country: 0
+[2012-01-13 15:24:10] topdealsImport: Fetched 470 rows to copy.
+[2012-01-13 15:24:10] topdealsImport: Start copy data for table country.
+[2012-01-13 15:24:10] topdealsImport: Finished copy data for table country.
+[2012-01-13 15:24:10] topdealsImport: Last insert id for partner: 0
+[2012-01-13 15:24:10] topdealsImport: Fetched 222 rows to copy.
+[2012-01-13 15:24:10] topdealsImport: Start copy data for table partner.
+[2012-01-13 15:24:10] topdealsImport: Finished copy data for table partner.
+[2012-01-13 15:24:10] topdealsImport: Last insert id for item: 0
+[2012-01-13 15:24:10] topdealsImport: Fetched 754 rows to copy.
+[2012-01-13 15:24:10] topdealsImport: Start copy data for table item.
+[2012-01-13 15:24:11] topdealsImport: Finished copy data for table item.
+[2012-01-13 15:24:11] topdealsImport: Last insert id for coupon: 0
+[2012-01-13 15:24:11] topdealsImport: Fetched 126066 rows to copy.
+[2012-01-13 15:24:11] topdealsImport: Start copy data for table coupon.
+[2012-01-13 15:24:46] topdealsImport: Finished copy data for table coupon.
+[2012-01-13 15:24:46] topdealsImport: Last insert id for item_session: 0
+[2012-01-13 15:24:47] topdealsImport: Fetched 209645 rows to copy.
+[2012-01-13 15:24:47] topdealsImport: Start copy data for table item_session.
+[2012-01-13 15:26:22] topdealsImport: Finished copy data for table item_session.
+[2012-01-13 15:26:22] topdealsImport: Finished import process.

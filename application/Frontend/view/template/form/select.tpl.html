@@ -1,0 +1,15 @@
+{if isset($prefix)}{$prefix}{/if}
+<div id="{$wrapperId}" class="field fieldSelect {$classes}">
+    <div class="labelWrapper">
+        {if $label}<label for="{$elementId}">{$label}</label>{/if}
+    </div>
+    <div class="elementWrapper">
+        <select name="{$name}" id="{$elementId}" {$options}>
+            {foreach $valueList as $key=>$option}
+            <option value="{$key}" {if $key == $value}selected="selected"{/if}>{$option}</option>
+            {/foreach}
+        </select>
+        {if isset($description)}<p class="formElementDescription">{$description}</p>{/if}
+    </div>
+</div>
+{if isset($suffix)}{$suffix}{/if}

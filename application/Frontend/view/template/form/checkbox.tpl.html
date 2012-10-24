@@ -1,0 +1,11 @@
+{if isset($prefix)}{$prefix}{/if}
+<div id="{$wrapperId}" class="field fieldCheckbox {$classes}">
+    <div class="labelWrapper">
+        {if $label}<label for="{$elementId}">{$label}</label>{/if}
+    </div>
+    <div class="elementWrapper">
+        <input type="checkbox" name="{$name}" id="{$elementId}" value="1" {if $value == 1}checked="checked"{/if} {$options} />
+        {if isset($description)}<p class="formElementDescription">{$description}</p>{/if}
+    </div>
+</div>
+{if isset($suffix)}{$suffix}{/if}
