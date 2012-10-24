@@ -9,6 +9,7 @@
             <th>ID</th>
             <th>Name</th>
             <th>URL</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -18,6 +19,7 @@
                 <td>{$oReference->getId()}</td>
                 <td>{$oReference->getName()}</td>
                 <td>{$oReference->getUrl()}</td>
+                <td><a href="/referece/edit/id/{$oReference->getId()}"</td>
             </tr>
             {/foreach}
         {else}
