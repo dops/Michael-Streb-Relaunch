@@ -64,12 +64,6 @@ class Mjoelnir_Site
     protected $_params  = array();
 
     /**
-     * The title of the page.
-     * @var str
-     */
-    protected $_sPageTitel  = '';
-
-    /**
      * Javascript to add into the layout template.
      * @var array
      */
@@ -87,6 +81,11 @@ class Mjoelnir_Site
      */
     protected $_breadcrumbPaths  = array();
 
+    /**
+     * The page title.
+     * @var str
+     */
+    protected $_sPageTitle  = '';
 
     /**
      * Debug content to display at the bottom of the page.
@@ -94,7 +93,7 @@ class Mjoelnir_Site
      */
     protected $_debugContent    = array();
 
-    protected function __construct($request) {
+    protected function __construct() {
         // Overwrite default page and action settings if config parameters are set.
         if (defined(DEFAULT_PAGE))      { $this->_defaultPage = DEFAULT_PAGE; }
         if (defined(DEFAULT_ACTION))    { $this->_defaultAction = DEFAULT_ACTION; }
@@ -134,21 +133,86 @@ class Mjoelnir_Site
     }
 
     /**
+     * Builds the page and sends it to the client.
+     */
+    public function run() {
+        $methodName = $this->_action . 'Action';
+        $view       = $this->_pageObj->$methodName();
+        
+        $view->assign('headTitle', $this->_getPageTitle());
+        $view->assign('css', implode("\n", $this->_css));
+        $view->assign('jsHeader', implode("\n", $this->_javascript['header']));
+        $view->assign('jsFooter', implode("\n", $this->_javascript['footer']));
+        $view->assign('breadcrumb', $this->_breadcrumbPaths);
+        $view->assign('debugContent', implode("\n", $this->_debugContent));
+
+        return $view;
+    }
+    
+    #################
+    ## GET METHODS ##
+    #################
+    
+    /**
      * Returns the name of the appilcation.
      * @return  str
      */
     public function getApplicationName() {
         return APPLICATION_NAME;
     }
-
+    
+    /**
+     * Returns thr requested page.
+     * @return str
+     */
+    public function getPage() {
+        return $this->_page;
+    }
 
     /**
-     * sets a new baseTemplate for all pages using this object instance
+     * Returns the requested action.
+     * @return str
+     */
+    public function getAction() {
+        return $this->_action;
+    }
+    
+    /**
+     * Returns the page title.
+     * @return str
+     */
+    protected function _getPageTitle() {
+        if (strlen($this->_sPageTitle) > 0) {
+            return implode(' ', array(PAGE_TITLE_PREFIX, PAGE_TITLE_GLUE, $this->_sPageTitle));
+        }
+        return PAGE_TITLE_PREFIX;
+    }
+
+    /**
+     * Returns the content for the request.
+     */
+    public function display($view) {
+        if (RETURN_METHOD == 'json') {
+            echo json_encode(array('status' => 200, 'page' => '/' . $this->_page . '/' . $this->_action));
+            die();
+        }
+        else {
+            $sTemplateInheritance   = 'extends:' . $this->_baseTempalte . '|' . $view->getTemplate();
+            $view->display($sTemplateInheritance);
+        }
+    }
+
+    #################
+    ## SET METHODS ##
+    #################
+    
+    /**
+     * Sets a new baseTemplate for all pages using this object instance
      */
     public function setBaseTemplate($template = null) {
-	if (!is_null($template)) {
-	    $this->_baseTempalte = $template;
-	}
+        if (!is_null($template)) {
+            $this->_baseTempalte = $template;
+        }
     }
 
     /**
@@ -230,97 +294,15 @@ class Mjoelnir_Site
     public function setDefaultAction($sAction) {
         $this->_defaultAction = $sAction;
     }
-
-    /**
-     * Builds the page and sends it to the client.
-     */
-    public function run() {
-        $oAcl       = Mjoelnir_Acl::getInstance();
-        $oBootstrap = new Bootstrap();
-        $oLog       = Mjoelnir_Log::getInstance();
-        
-        try {
-            if (UserModel::getCurrentUser() !== false) {
-                // Authorized user
-                if (
-                    !$oAcl->isAllowed(strtolower(APPLICATION_NAME), strtolower($this->_page), strtolower($this->_action))
-                ) {
-                    $oLog->log('The user tried to access a not defined permission.');
-
-                    if (RETURN_METHOD == 'json') {
-                        echo json_encode(array('error' => true, 'status' => 403, 'message' => Mjoelnir_Message::getMessage(2010)));
-                        exit();
-                    }
-
-                    header('Location: ' . WEB_ROOT . 'error/forbidden');
-                    exit();
-                }
-            }
-            else {
-                // Not authorized user
-                if ($this->_page != $this->_defaultPage || $this->_action != $this->_defaultAction) {
-                    if (RETURN_METHOD == 'json') {
-                        echo json_encode(array('error' => true, 'status' => 401, 'message' => Mjoelnir_Message::getMessage(2009)));
-                        exit();
-                    }
-
-                    header('Location: ' . WEB_ROOT . '' . $this->_defaultPage . '/' . $this->_defaultAction);
-                    exit();
-                }
-            }
-        }
-        catch (Mjoelnir_Acl_Exception $e) {
-            $oLog->log('The user tried to access a not defined permission.');
-            header('Location: ' . WEB_ROOT . 'error/forbidden');
-            exit();
-        }
-
-        $oBootstrap->start();
-
-        $oMessages  = Mjoelnir_Message::getInstance(Mjoelnir_Request::getInstance());
-
-        $methodName = $this->_action . 'Action';
-        $content    = $this->_pageObj->$methodName();
-
-        $view   = new Mjoelnir_View();
-        $view->setTemplateDir(PATH_TEMPLATE);
-
-        $view->assign('baseUrl', (preg_match('/HTTP\//', $_SERVER['SERVER_PROTOCOL'])) ? 'http://' . $_SERVER['HTTP_HOST'] : 'https://' . $_SERVER['HTTP_HOST']);
-        $view->assign('headTitle', $this->_sPageTitel);
-        $view->assign('applicationEnv', APPLICATION_ENV);
-        $view->assign('WEB_ROOT', WEB_ROOT);
-        $view->assign('css', implode("\n", $this->_css));
-        $view->assign('jsHeader', implode("\n", $this->_javascript['header']));
-        $view->assign('jsFooter', implode("\n", $this->_javascript['footer']));
-        $view->assign('breadcrumb', $this->_breadcrumbPaths);
-        $view->assign('aMessages', $oMessages->getAllMessages());
-        $view->assign('CONTENT', $content);
-        $view->assign('oAcl', $oAcl);
-        $view->assign('oCurrentUser', UserModel::getCurrentUser());
-
-        $oBootstrap->end();
-
-        $view->assign('debugContent', implode("\n", $this->_debugContent));
-
-        if (RETURN_METHOD == 'json') {
-            echo json_encode(array('status' => 200, 'page' => '/' . $this->_page . '/' . $this->_action));
-            die();
-        }
-        else {
-            $view->display($this->_baseTempalte);
-        }
-    }
     
-    /**
-     * Sets the page title.
-     * @param   str $sPageTitel The title of the page.
-     * @return  bool
-     */
-    public function setPageTitle($sPageTitel) {
-        $this->_sPageTitel  = $sPageTitel;
-        return true;
+    public function setPageTitle($sTitle) {
+        $this->_sPageTitle  = $sTitle;
     }
 
+    ###################
+    ## OTHER METHODS ##
+    ###################
+    
     /**
      * Adds a css file.
      * @param   str $css    The path to the css file relative to the the css path.

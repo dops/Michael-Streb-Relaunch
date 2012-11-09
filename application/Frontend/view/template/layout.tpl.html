@@ -34,7 +34,7 @@
                     <a href="{$data.link}" title="{$data.title}">&rArr; {$data.title}</a>
                     {/foreach}
                 </div>
-                    {$CONTENT}
+                    {block name=content}{/block}
             </section>
         </div>
         {if $applicationEnv == 'development'}

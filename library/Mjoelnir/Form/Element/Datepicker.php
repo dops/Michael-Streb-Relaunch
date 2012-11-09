@@ -8,16 +8,16 @@
 class Mjoelnir_Form_Element_Datepicker extends Mjoelnir_Form_Element_Abstract
 {
 
-    public function __construct($name, $value, $options = array(), $templateDir = null, $prefix = '', $suffix = '') {
-        parent::__construct($name, $value, $options, $templateDir, $prefix, $suffix);
+    public function __construct($sName, $mValue, $aOptions = array(), $sTemplateDir = null, $sPrefix = '', $sSuffix = '') {
+        parent::__construct($sName, $mValue, $aOptions, $sTemplateDir, $sPrefix, $sSuffix);
 
-        if (isset($this->_options['class']))    { $this->_options['class']    .= ' datepicker'; }
-        else                                    { $this->_options['class']    = ' datepicker'; }
+        if (isset($this->_aOptions['class']))    { $this->_aOptions['class']    .= ' datepicker'; }
+        else                                    { $this->_aOptions['class']    = ' datepicker'; }
     }
 
     /**
      * Type definition needed in abstract class.
      * @var str
      */
-    protected $_type    = 'datepicker';
+    protected $_sType    = 'datepicker';
 }

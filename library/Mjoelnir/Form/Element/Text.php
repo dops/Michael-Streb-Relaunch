@@ -11,5 +11,5 @@ class Mjoelnir_Form_Element_Text extends Mjoelnir_Form_Element_Abstract
      * Type definition needed in abstract class.
      * @var str
      */
-    protected $_type    = 'text';
+    protected $_sType    = 'text';
 }

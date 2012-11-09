@@ -34,4 +34,8 @@ class Mjoelnir_View extends Smarty
             $this->_sTemplate   = $sTemplate;
         }
     }
+    
+    public function getTemplate() {
+        return $this->_sTemplate;
+    }
 }

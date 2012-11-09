@@ -11,6 +11,8 @@ class IndexController extends \Mjoelnir_Controller_Abstract
         $oSite->addBreadcrumb(array('title' => 'Übersicht', 'link' => WEB_ROOT));
         $this->_view->assign ('user', $user);
 
+        $this->_view->setTemplate('index/index.tpl.html');
+        return $this->_view;
         return $this->_view->fetch('index/index.tpl.html');
     }
 

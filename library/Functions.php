@@ -26,3 +26,30 @@ function array_diff_recursive($aArray1, $aArray2) {
    
     return $aReturn;
 }
+
+
+function renameArrayIndex(&$aArray, $mOldIndex, $mNewIndex) {
+    // If the old or the new index is an array...
+    if (is_array($mOldIndex) || is_array($mNewIndex)) {
+        // ... the other one has to be an array too.
+        if (!is_array($mOldIndex) || !is_array($mNewIndex)) {
+            return false;
+        }
+        
+        // If the number of indexes is not equal.
+        if (count($mOldIndex) !== count($mNewIndex)) {
+            return false;
+        }
+        
+        foreach ($mOldIndex as $iKey => $mIndex) {
+            $aArray[$mNewIndex[$iKey]] = $aArray[$mOldIndex[$iKey]];
+            unset($aArray[$mOldIndex[$iKey]]);
+        }
+    }
+    else {
+        $aArray[$mNewIndex] = $aArray[$mOldIndex];
+        unset($aArray[$mOldIndex]);
+    }
+    
+    return $aArray;
+}

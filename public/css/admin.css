@@ -169,3 +169,12 @@ table th {
 }
 
 /* End of table styles */
+
+/* Form styles */
+
+.labelWrapper {
+    float: left;
+    width: 250px;
+}
+
+/* End of form styles */

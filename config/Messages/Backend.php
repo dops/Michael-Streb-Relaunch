@@ -11,6 +11,8 @@
  * Be aware keep the order, to not define a message name twice!
  */
 
-// Account
+// References
 define('MESSAGE_1000', 'Die Referenz wurde gespeichert.');
 
+// References
+define('MESSAGE_2000', 'Die hochgeladene Grafik hat einen ungültigen Typ. Nur die folgenden Typen sind erlaubt: ::ALLOWED_TYPES::');

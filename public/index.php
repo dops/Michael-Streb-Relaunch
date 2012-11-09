@@ -17,8 +17,8 @@ include PATH_LIBRARY . 'Autoloader.php';
  */
 include PATH_LIBRARY . 'Functions.php';
 
-$site   = Mjoelnir_Site::getInstance();
-$site->run();
+$oBootstrap = new Bootstrap();
+$oBootstrap->load();
 
 $iEndTime   = microtime(true);
 $iRuntime   = number_format($iEndTime - $iStartTime, 4);

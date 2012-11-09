@@ -11,5 +11,5 @@ class Mjoelnir_Form_Element_Radio extends Mjoelnir_Form_Element_Abstract
      * Type definition needed in abstract class.
      * @var str
      */
-    protected $_type    = 'radio';
+    protected $_sType    = 'radio';
 }

@@ -11,5 +11,5 @@ class Mjoelnir_Form_Element_Textarea extends Mjoelnir_Form_Element_Abstract
      * Type definition needed in abstract class.
      * @var str
      */
-    protected $_type    = 'textarea';
+    protected $_sType    = 'textarea';
 }

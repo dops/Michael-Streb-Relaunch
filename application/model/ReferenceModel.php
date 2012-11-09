@@ -30,7 +30,7 @@ class ReferenceModel extends AbstractModel
         'time_insert'   => null,
         'time_update'   => null,
     );
-
+    
     /**
      * The unique id field is the field that holds the system-wide unique id for the model instance.
      * @var int
@@ -44,7 +44,12 @@ class ReferenceModel extends AbstractModel
     protected $_aDataValidation  = array(
         'url'   => '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/'
     );
-
+    
+    /**
+     * The accepted mime types for file uploads.
+     * @var array
+     */
+    protected $_aAcceptedImageMimeTypes = array('image/jpg', 'image/png', 'image/gif');
 
     protected function __construct($mData) {
         parent::__construct($mData);
@@ -79,6 +84,23 @@ class ReferenceModel extends AbstractModel
         return $this->_aData['url'];
     }
     
+    /**
+     * Returns an image for the reference for the given index.
+     * @param   int $iIndex The index of the image.
+     * @return  ReferenceImageModel
+     */
+    public function getImage($iIndex = 0) {
+        $sImageFilePath = PATH_IMAGES . 'reference/' . $this->getId() . '_' . $iIndex . '.jpg';
+        if (file_exists($sImageFilePath)) {
+            $aImageInfo         = getimagesize($sImageFilePath);
+            renameArrayIndex($aImageInfo, array(0, 1, 2, 3), array('width', 'height', 'typeFlag', 'attributeString'));
+            $aImageInfo['path'] = $sImageFilePath;
+            return $aImageInfo;
+        }
+        return false;
+    }
+
+
     #################
     ## SET METHODS ##
     #################
@@ -113,5 +135,20 @@ class ReferenceModel extends AbstractModel
             return true;
         }
         return false;
+    }
+    
+    ###################
+    ## OTHER METHODS ##
+    ###################
+    
+    
+    public function saveImage($aImageInfo) {
+        var_dump($aImageInfo);
+        
+        if (!in_array($aImageInfo['type'], $this->_aAcceptedImageMimeTypes)) {
+            Mjoelnir_Redirect::redirect('/reference/index/message/2000');
+        }
+        
+        die();
     }
 }

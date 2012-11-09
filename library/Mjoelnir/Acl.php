@@ -77,6 +77,7 @@ class Mjoelnir_Acl
             return true;
         }
 
+        // If the user has necessary permissions.
         if (isset($this->_permissions[$sApplication][$sController][$sAction])) {
             return $this->_permissions[$sApplication][$sController][$sAction];
         }
@@ -93,17 +94,22 @@ class Mjoelnir_Acl
      * @throws  Mjoelnir_Acl_Exception
      */
     public function isAllowed($sApplication, $sController, $sAction) {
+        // The Admin has god mode. :)
         if ($this->_isAdmin) {
             return true;
         }
+        
+        // The user is allways allowed to enter the default page/action.
+        if ($sController === DEFAULT_PAGE && $sAction === DEFAULT_ACTION) {
+            return true;
+        }
 
+        // If the user has necessary permissions.
         if (isset($this->_permissions[$sApplication][$sController][$sAction])) {
             return $this->_permissions[$sApplication][$sController][$sAction];
         }
 
         return false;
-
-        throw new Mjoelnir_Acl_Exception('Die angeforderte Seite ist nicht verfügbar');
     }
 
     /**

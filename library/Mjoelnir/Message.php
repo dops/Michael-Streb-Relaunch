@@ -9,6 +9,7 @@
 class Mjoelnir_Message {
 
     const MESSAGE_CODE_DELIMITER    = ',';
+    const MESSAGE_CODE_REPLACEMENT_DELIMITER    = ':';
 
     /**
      * The singleton instance of the class.
@@ -141,18 +142,20 @@ class Mjoelnir_Message {
 
     /**
      * Returns a single message if it is defined. If not, an empty string is returned.
-     * @param   int $iCode  The integer value of the requested message.
+     * @param   int     $iCode          The integer value of the requested message.
+     * @param   array   $$aReplacements An array containing placeholders as keys and replacements as values. To placeholders will be searched in the message and replaced by the replacement.
      * @return  array
      */
-    public static function getMessage($iCode) {
+    public static function getMessage($iCode, $aReplacements = array()) {
         self::_loadMessageFile();
-
+        
         $sMessageConstantName   = 'MESSAGE_' . $iCode;
-
+        
         if (defined($sMessageConstantName)) {
-            return constant($sMessageConstantName);
+            $sMessage   = str_replace(array_keys($aReplacements), $aReplacements, constant($sMessageConstantName));
+            return $sMessage;
         }
-
+        
         return false;
     }
 

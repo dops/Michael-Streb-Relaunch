@@ -96,6 +96,12 @@ switch ($_SERVER['HTTP_USER_AGENT']) {
 }
 
 /**
+ * Page title prefix
+ */
+define('PAGE_TITLE_PREFIX', 'Michael Streb');
+define('PAGE_TITLE_GLUE', '::');
+
+/**
  * Email adresses
  */
 
