@@ -178,6 +178,22 @@ class Mjoelnir_Site
     }
     
     /**
+     * Returns the default page.
+     * @return str
+     */
+    public function getDefaultPage() {
+        return $this->_defaultPage;
+    }
+    
+    /**
+     * Returns the default action.
+     * @return str
+     */
+    public function getDefaultAction() {
+        return $this->_defaultAction;
+    }
+
+    /**
      * Returns the page title.
      * @return str
      */

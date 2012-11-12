@@ -12,7 +12,8 @@ class ErrorController extends \Mjoelnir_Controller_Abstract
 {
     public function forbiddenAction() {
         header('HTTP/1.0 403 Forbidden');
-        return $this->_view->fetch('error/forbidden.tpl.html');
+        $this->_view->setTemplate('error/forbidden.tpl.html');
+        return $this->_view;
     }
 }
 

@@ -1,4 +1,4 @@
-<h2>User bearbeiten</h2>
+{block name=content}<h2>User bearbeiten</h2>
 {if isset($error) && count($error) > 0}
 <div class="errorMsg">
     {foreach $error as $message}
@@ -7,3 +7,4 @@
 </div>
 {/if}
 {$userForm}
+{/block}

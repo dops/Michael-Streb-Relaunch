@@ -13,7 +13,6 @@ class IndexController extends \Mjoelnir_Controller_Abstract
 
         $this->_view->setTemplate('index/index.tpl.html');
         return $this->_view;
-        return $this->_view->fetch('index/index.tpl.html');
     }
 
     public function logoutAction () {

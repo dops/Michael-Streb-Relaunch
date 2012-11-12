@@ -7,7 +7,9 @@ class IndexController extends \Mjoelnir_Controller_Abstract
     public function indexAction() {
         $user   = \UserModel::getCurrentUser();
 
-        return $this->_view->fetch('index/index.tpl.html');
+        $this->_view->setTemplate('index/index.tpl.html');
+        
+        return $this->_view;
     }
 
     public function testAction () {

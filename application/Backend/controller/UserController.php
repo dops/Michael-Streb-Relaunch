@@ -18,7 +18,9 @@ class UserController extends \Mjoelnir_Controller_Abstract {
         $site->addBreadcrumb(array('title' => 'Userverwaltung', 'link' => WEB_ROOT . 'user'));
 
         $this->_view->assign('WEB_ROOT', WEB_ROOT);
-        return $this->_view->fetch('user/index.tpl.html');
+        
+        $this->_view->setTemplate('user/index.tpl.html');
+        return $this->_view;
     }
 
     /**
@@ -33,7 +35,8 @@ class UserController extends \Mjoelnir_Controller_Abstract {
         $this->_view->assign('WEB_ROOT', WEB_ROOT);
         $this->_view->assign('users', \UserModel::getAll());
 
-        return $this->_view->fetch('user/list.tpl.html');
+        $this->_view->setTemplate('user/list.tpl.html');
+        return $this->_view;
     }
 
     /**
@@ -140,7 +143,8 @@ class UserController extends \Mjoelnir_Controller_Abstract {
         $this->_view->assign('error', $aError);
         $this->_view->assign('userForm', $oForm);
 
-        return $this->_view->fetch('user/edit.tpl.html');
+        $this->_view->setTemplate('user/edit.tpl.html');
+        return $this->_view;
     }
 
     /**
@@ -226,7 +230,8 @@ class UserController extends \Mjoelnir_Controller_Abstract {
 
         $this->_view->assign('form', $form->__toString());
 
-        return $this->_view->fetch('user/login.tpl.html');
+        $this->_view->setTemplate('user/login.tpl.html');
+        return $this->_view;
     }
 
 	/**

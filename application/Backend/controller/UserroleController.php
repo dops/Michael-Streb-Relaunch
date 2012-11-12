@@ -27,7 +27,8 @@ class UserroleController extends \Mjoelnir_Controller_Abstract
         $this->_view->assign('WEB_ROOT', WEB_ROOT);
         $this->_view->assign('userroles', \UserroleModel::getAll());
 
-        return $this->_view->fetch('userrole/list.tpl.html');
+        $this->_view->setTemplate('userrole/list.tpl.html');
+        return $this->_view;
     }
 
     /**
@@ -118,7 +119,8 @@ class UserroleController extends \Mjoelnir_Controller_Abstract
         $this->_view->assign('aMessages', $aMessages);
         $this->_view->assign('userForm', $form);
 
-        return $this->_view->fetch('userrole/edit.tpl.html');
+        $this->_view->setTemplate('userrole/edit.tpl.html');
+        return $this->_view;
     }
 
     /**
@@ -286,7 +288,8 @@ class UserroleController extends \Mjoelnir_Controller_Abstract
 
         $this->_view->assign('messages', $aMessages);
 
-        return $this->_view->fetch('userrole/permissionUpdate.tpl.html');
+        $this->_view->setTemplate('userrole/permissionUpdate.tpl.html');
+        return $this->_view;
     }
 }
 

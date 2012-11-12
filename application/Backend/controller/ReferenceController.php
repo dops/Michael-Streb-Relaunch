@@ -10,7 +10,8 @@ class ReferenceController extends \Mjoelnir_Controller_Abstract
         
         $this->_view->assign('aReferences', $aReferences);
         
-        return $this->_view->fetch('reference/index.tpl.html');
+        $this->_view->setTemplate('reference/index.tpl.html');
+        return $this->_view;
     }
     
     public function editAction() {
@@ -47,6 +48,7 @@ class ReferenceController extends \Mjoelnir_Controller_Abstract
         
         unset($oForm, $oReference, $aMessages);
         
-        return $this->_view->fetch('reference/edit.tpl.html');
+        $this->_view->setTemplate('reference/edit.tpl.html');
+        return $this->_view;
     }
 }

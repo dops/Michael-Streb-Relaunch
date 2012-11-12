@@ -144,11 +144,14 @@ class ReferenceModel extends AbstractModel
     
     public function saveImage($aImageInfo) {
         var_dump($aImageInfo);
+
+        $oImage = new Imagick($aImageInfo['tmp_name']);
+        echo $oImage->resizeimage(1024, 768, 0, 0, true);
+        $oImage->writeimage(PATH_IMAGES . 'references/' . $this->_aData['reference_id'] . '.jpg');
+        die();
         
         if (!in_array($aImageInfo['type'], $this->_aAcceptedImageMimeTypes)) {
             Mjoelnir_Redirect::redirect('/reference/index/message/2000');
         }
-        
-        die();
     }
 }
